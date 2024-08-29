@@ -1,11 +1,14 @@
-<script setup>
-import Form from './components/Form.vue'
-</script>
-
 <template>
-  <main>
-    <Form />
-  </main>
+  <div id="app">
+    <BHeader />
+    <router-view></router-view>
+  </div>
 </template>
 
-<style scoped></style>
+<script setup>
+import BHeader from './components/BHeader.vue'
+</script>
+
+<style>
+@import 'bootstrap/dist/css/bootstrap.min.css';
+</style>

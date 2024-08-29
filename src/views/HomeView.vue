@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <h1 class="text-center">User Information Form</h1>
-        <form @submit.prevent="submitForm">
+        <form @submit.prevent="login">
           <div class="row mb-3">
             <div class="col-md-6">
               <label for="username" class="form-label">Username</label>
@@ -90,7 +90,7 @@
             </div>
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-primary me-2">Submit</button>
+            <button type="submit" class="btn btn-primary me-2">Login</button>
             <button type="button" class="btn btn-secondary" @click="clearForm">Clear</button>
           </div>
         </form>
@@ -118,6 +118,14 @@
 import { ref } from 'vue'
 import DataTable from 'primevue/datatable'
 import Column from 'primevue/column'
+import { useRouter } from 'vue-router'
+
+// Define common usernames and offensive words
+const commonUsernames = ['admin', 'user', 'test']
+const offensiveWords = ['badword1', 'badword2', 'badword3'] // Replace with actual words
+
+// Router instance
+const router = useRouter()
 
 // Form data and errors
 const formData = ref({
@@ -140,10 +148,8 @@ const errors = ref({
   gender: null
 })
 
-// Lists of common usernames, passwords, and offensive words
-const commonUsernames = ['admin', 'user', 'test']
-const commonPasswords = ['password123', '12345678', 'qwerty']
-const offensiveWords = ['offensiveWord1', 'offensiveWord2']
+// Hardcoded credentials
+const hardcodedPassword = '@Password123'
 
 // Helper function to check for offensive words
 const containsOffensiveWord = (text) => {
@@ -177,8 +183,6 @@ const validatePassword = (blur) => {
       errors.value.password =
         'Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.'
     }
-  } else if (commonPasswords.includes(password.toLowerCase())) {
-    errors.value.password = 'This password is too common, please choose a more secure one'
   } else {
     errors.value.password = null
   }
@@ -190,25 +194,6 @@ const validateConfirmPassword = (blur) => {
     if (blur) errors.value.confirmPassword = 'Passwords do not match'
   } else {
     errors.value.confirmPassword = null
-  }
-}
-
-const clearForm = () => {
-  formData.value = {
-    username: '',
-    password: '',
-    confirmPassword: '',
-    isAustralian: false,
-    reason: '',
-    gender: ''
-  }
-  errors.value = {
-    username: null,
-    password: null,
-    confirmPassword: null,
-    isAustralian: null,
-    reason: null,
-    gender: null
   }
 }
 
@@ -241,8 +226,8 @@ const validateReason = () => {
   }
 }
 
-// Form submission
-const submitForm = () => {
+// Form submission and login validation
+const login = () => {
   validateName(true)
   validatePassword(true)
   validateConfirmPassword(true)
@@ -256,16 +241,37 @@ const submitForm = () => {
     !errors.value.confirmPassword &&
     !errors.value.isAustralian &&
     !errors.value.gender &&
-    !errors.value.reason
+    !errors.value.reason &&
+    formData.value.password === hardcodedPassword
   ) {
-    submittedCards.value.push({
-      ...formData.value
-    })
-    clearForm()
+    console.log('Credentials are correct, setting isAuthenticated to true')
+    localStorage.setItem('isAuthenticated', 'true')
+    router.push('/about')
+  } else {
+    console.log('Invalid credentials or form validation failed')
+    alert('Invalid credentials. Please try again.')
   }
 }
 
 // Clear form
+const clearForm = () => {
+  formData.value = {
+    username: '',
+    password: '',
+    confirmPassword: '',
+    isAustralian: false,
+    reason: '',
+    gender: ''
+  }
+  errors.value = {
+    username: null,
+    password: null,
+    confirmPassword: null,
+    isAustralian: null,
+    reason: null,
+    gender: null
+  }
+}
 </script>
 
 <style scoped>
