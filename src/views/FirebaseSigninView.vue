@@ -1,29 +1,3 @@
-<!-- <template>
-  <div class="firebase-signin">
-    <h2>Firebase Sign-in</h2>
-    <button @click="signInWithFirebase">Sign in with Firebase</button>
-  </div>
-</template>
-
-<script setup>
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
-
-const signInWithFirebase = () => {
-  const auth = getAuth()
-  const provider = new GoogleAuthProvider()
-
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      // Store user authentication status
-      localStorage.setItem('isAuthenticated', 'true')
-      console.log('User signed in:', result.user)
-    })
-    .catch((error) => {
-      console.error('Error signing in:', error)
-    })
-}
-</script> -->
-
 <template>
   <div class="firebase-signin">
     <h2>Sign In with Firebase</h2>

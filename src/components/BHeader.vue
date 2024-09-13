@@ -20,7 +20,10 @@
             >Firebase Register</router-link
           >
         </li>
-        <!-- Show the logout button only if the user is logged in -->
+        <li class="nav-item">
+          <router-link to="/addbook" class="nav-link" active-class="active">Add Book</router-link>
+        </li>
+
         <li v-if="isAuthenticated" class="nav-item">
           <button class="btn btn-link nav-link" @click="logout">Logout</button>
         </li>
@@ -31,18 +34,17 @@
 
 <script setup>
 import { inject } from 'vue'
-import { getAuth, signOut } from 'firebase/auth'
+import { auth } from '../Firebase/init'
+import { signOut } from 'firebase/auth'
 
-// Inject the global `isAuthenticated` state
 const isAuthenticated = inject('isAuthenticated')
 
 const logout = () => {
-  const auth = getAuth()
   signOut(auth)
     .then(() => {
       console.log('User has logged out successfully')
-      localStorage.removeItem('isAuthenticated') // Clear local storage
-      isAuthenticated.value = false // Update authentication status
+      localStorage.removeItem('isAuthenticated')
+      isAuthenticated.value = false
     })
     .catch((error) => {
       console.error('Error during logout:', error)
