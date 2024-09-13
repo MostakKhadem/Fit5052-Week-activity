@@ -182,7 +182,7 @@ const validatePassword = (blur) => {
   } else {
     errors.value.password = null
   }
-  validateConfirmPassword(false)
+  validateConfirmPassword(false) // Re-validate confirm password whenever the main password changes
 }
 
 const validateConfirmPassword = (blur) => {
@@ -190,25 +190,6 @@ const validateConfirmPassword = (blur) => {
     if (blur) errors.value.confirmPassword = 'Passwords do not match'
   } else {
     errors.value.confirmPassword = null
-  }
-}
-
-const clearForm = () => {
-  formData.value = {
-    username: '',
-    password: '',
-    confirmPassword: '',
-    isAustralian: false,
-    reason: '',
-    gender: ''
-  }
-  errors.value = {
-    username: null,
-    password: null,
-    confirmPassword: null,
-    isAustralian: null,
-    reason: null,
-    gender: null
   }
 }
 
@@ -266,6 +247,24 @@ const submitForm = () => {
 }
 
 // Clear form
+const clearForm = () => {
+  formData.value = {
+    username: '',
+    password: '',
+    confirmPassword: '',
+    isAustralian: false,
+    reason: '',
+    gender: ''
+  }
+  errors.value = {
+    username: null,
+    password: null,
+    confirmPassword: null,
+    isAustralian: null,
+    reason: null,
+    gender: null
+  }
+}
 </script>
 
 <style scoped>
