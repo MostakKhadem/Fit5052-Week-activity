@@ -23,6 +23,23 @@
         <li class="nav-item">
           <router-link to="/addbook" class="nav-link" active-class="active">Add Book</router-link>
         </li>
+        <li v-if="isAuthenticated" class="nav-item">
+          <router-link to="/GetBookCount" class="nav-link" active-class="active"
+            >Get Book Count</router-link
+          >
+        </li>
+
+        <li v-if="isAuthenticated" class="nav-item">
+          <router-link to="/GetWeather" class="nav-link" active-class="active"
+            >Get Weather</router-link
+          >
+        </li>
+
+        <li v-if="isAuthenticated" class="nav-item">
+          <router-link to="/CountBookApi" class="nav-link" active-class="active"
+            >Count Book API</router-link
+          >
+        </li>
 
         <li v-if="isAuthenticated" class="nav-item">
           <button class="btn btn-link nav-link" @click="logout">Logout</button>
