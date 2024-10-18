@@ -10,11 +10,17 @@
         <li class="nav-item">
           <router-link to="/about" class="nav-link" active-class="active">About</router-link>
         </li>
+<<<<<<< HEAD
 
         <li class="nav-item">
           <router-link to="/GetWeather" class="nav-link" active-class="active">Get Weather</router-link>
         </li>
 
+=======
+         <li class="nav-item">
+          <router-link to="/GetWeather" class="nav-link" active-class="active">Get Weather</router-link>
+        </li>
+>>>>>>> 440b86a00e03f049121aac89bf5661d9567335d8
         <li class="nav-item">
           <router-link to="/FireLogin" class="nav-link" active-class="active"
             >Firebase Login</router-link
@@ -34,8 +40,11 @@
           >
         </li>
 
+<<<<<<< HEAD
         
 
+=======
+>>>>>>> 440b86a00e03f049121aac89bf5661d9567335d8
         <li v-if="isAuthenticated" class="nav-item">
           <router-link to="/CountBookApi" class="nav-link" active-class="active"
             >Count Book API</router-link
