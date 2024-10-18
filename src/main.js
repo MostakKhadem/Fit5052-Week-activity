@@ -4,7 +4,7 @@ import PrimeVue from 'primevue/config'
 import Aura from '@primevue/themes/aura'
 import router from './router'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { auth } from './Firebase/init'
+import { auth } from './firebase/init'
 import { onAuthStateChanged } from 'firebase/auth'
 
 const app = createApp(App)
