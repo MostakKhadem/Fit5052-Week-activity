@@ -10,6 +10,11 @@
         <li class="nav-item">
           <router-link to="/about" class="nav-link" active-class="active">About</router-link>
         </li>
+
+        <li class="nav-item">
+          <router-link to="/GetWeather" class="nav-link" active-class="active">Get Weather</router-link>
+        </li>
+
         <li class="nav-item">
           <router-link to="/FireLogin" class="nav-link" active-class="active"
             >Firebase Login</router-link
@@ -29,11 +34,7 @@
           >
         </li>
 
-        <li v-if="isAuthenticated" class="nav-item">
-          <router-link to="/GetWeather" class="nav-link" active-class="active"
-            >Get Weather</router-link
-          >
-        </li>
+        
 
         <li v-if="isAuthenticated" class="nav-item">
           <router-link to="/CountBookApi" class="nav-link" active-class="active"
@@ -51,7 +52,7 @@
 
 <script setup>
 import { inject } from 'vue'
-import { auth } from '../Firebase/init'
+import { auth } from '../firebase/init'
 import { signOut } from 'firebase/auth'
 
 const isAuthenticated = inject('isAuthenticated')
