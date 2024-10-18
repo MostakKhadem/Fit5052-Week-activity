@@ -25,7 +25,7 @@ onAuthStateChanged(auth, (user) => {
 })
 
 
-// Use PrimeVue and Router s
+// Use PrimeVue and Router 
 app.use(router)
 app.use(PrimeVue, {
   theme: {
