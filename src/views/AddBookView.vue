@@ -120,7 +120,7 @@ const addBook = async () => {
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { db } from '../Firebase/init'
+import { db } from '../firebase/init'
 import { collection, addDoc, getDocs } from 'firebase/firestore'
 
 // Reactive variables
