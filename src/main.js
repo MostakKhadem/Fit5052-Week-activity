@@ -12,6 +12,7 @@ const app = createApp(App)
 // Global authentication state
 const isAuthenticated = ref(false)
 
+
 // Firebase authentication observer
 onAuthStateChanged(auth, (user) => {
   if (user) {
